@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+ 
+  body
+    main.container
+      h1= title
+ 
+      a.add-link(href="/update-cobj") Add to this table
+ 
+      if error
+        p.error-message= error
+ 
+      if records && records.length
+        table
+          thead
+            tr
+              th Name
+              th Publisher
+              th Price
+          tbody
+            each record in records
+              tr
+                td= record.properties.name || "—"
+                td= record.properties.publisher || "—"
+                td= record.properties.price || "—"
+      else if !error
+        p.empty-message No records found. Add your first video game!

@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+ 
+  body
+    main.container
+      h1 Add a Video Game
+ 
+      if error
+        p.error-message= error
+ 
+      form(action="/update-cobj" method="POST")
+        label(for="name") Name
+        input(
+          type="text"
+          id="name"
+          name="name"
+          value=values.name || ""
+          required
+        )
+ 
+        label(for="publisher") Publisher
+        input(
+          type="text"
+          id="publisher"
+          name="publisher"
+          value=values.publisher || ""
+          required
+        )
+ 
+        label(for="price") Price
+        input(
+          type="number"
+          id="price"
+          name="price"
+          value=values.price || ""
+          min="0"
+          step="any"
+          required
+        )
+ 
+        button(type="submit") Create Record
+ 
+      a.home-link(href="/") Return to the homepage
